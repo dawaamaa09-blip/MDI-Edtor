@@ -62,7 +62,10 @@
             searchToolStripMenuItem = new ToolStripMenuItem();
             toolStripSeparator5 = new ToolStripSeparator();
             aboutToolStripMenuItem = new ToolStripMenuItem();
+            fileSystemWatcher1 = new FileSystemWatcher();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)fileSystemWatcher1).BeginInit();
             SuspendLayout();
             // 
             // menuStrip1
@@ -303,6 +306,12 @@
             aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             aboutToolStripMenuItem.Size = new Size(315, 40);
             aboutToolStripMenuItem.Text = "&About...";
+            aboutToolStripMenuItem.Click += aboutToolStripMenuItem_Click;
+            // 
+            // fileSystemWatcher1
+            // 
+            fileSystemWatcher1.EnableRaisingEvents = true;
+            fileSystemWatcher1.SynchronizingObject = this;
             // 
             // Form1
             // 
@@ -317,6 +326,7 @@
             Load += Form1_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)fileSystemWatcher1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -356,5 +366,7 @@
         private ToolStripMenuItem aboutToolStripMenuItem;
         private ToolStripMenuItem tileHorizToolStripMenuItem;
         private ToolStripMenuItem tileVertToolStripMenuItem;
+        private FileSystemWatcher fileSystemWatcher1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
