@@ -155,7 +155,64 @@ namespace MDI_Edtor
         {
             TextBox txtBox = this.ActiveMdiChild.Controls.OfType<TextBox>().FirstOrDefault();
             if (txtBox == null) return;
-            txtBox.SelectAll();     
+            txtBox.SelectAll();
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            openFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
+            openFileDialog.Title = "Файл нээх";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    // Идэвхтэй MDI цонхыг шалгах
+                    Form child = this.ActiveMdiChild;
+
+                    // Цонх байхгүй бол шинээр үүсгэх
+                    if (child == null)
+                    {
+                        child = new Form();
+                        child.MdiParent = this;
+                    }
+
+                    // TextBox хайх
+                    TextBox txtBox = child.Controls
+                        .OfType<TextBox>()
+                        .FirstOrDefault();
+
+                    // TextBox байхгүй бол шинээр үүсгэх
+                    if (txtBox == null)
+                    {
+                        txtBox = new TextBox();
+                        txtBox.Multiline = true;
+                        txtBox.Dock = DockStyle.Fill;
+                        txtBox.ScrollBars = ScrollBars.Both;
+
+                        child.Controls.Add(txtBox);
+                    }
+
+                    // TXT файлын агуулгыг унших
+                    txtBox.Text = System.IO.File.ReadAllText(
+                        openFileDialog.FileName
+                    );
+
+                    // Цонхны гарчигт файлын нэрийг харуулах
+                    child.Text = System.IO.Path.GetFileName(
+                        openFileDialog.FileName
+                    );
+
+                    child.Show();
+                    child.Activate();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Алдаа: " + ex.Message);
+                }
+            }
         }
     }
 
