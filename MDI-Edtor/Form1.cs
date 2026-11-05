@@ -50,5 +50,61 @@
         {
 
         }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form active = this.ActiveMdiChild; // одоо идэвхтэй байгаа child
+            if (active == null)
+            {
+                MessageBox.Show("Хадгалах цонх алга байна.");
+                return;
+            }
+
+            TextBox txtBox = active.Controls.OfType<TextBox>().FirstOrDefault();
+            if (txtBox == null) return;
+
+            string path = active.Tag as string; // өмнө нь хадгалсан/нээсэн файлын зам
+
+            if (string.IsNullOrEmpty(path)) // анх удаа хадгалж байвал зам асууна
+            {
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Filter = "Текст файл (*.txt)|*.txt|Бүх файл (*.*)|*.*";
+                sfd.FileName = active.Text;
+                if (sfd.ShowDialog() != DialogResult.OK) return;
+                path = sfd.FileName;
+            }
+
+            System.IO.File.WriteAllText(path, txtBox.Text);
+            active.Tag = path;                              // дараагийн удаа шууд хадгална
+            active.Text = System.IO.Path.GetFileName(path); // гарчгийг файлын нэрээр солино
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form active = this.ActiveMdiChild; // одоо идэвхтэй байгаа child
+            if (active == null)
+            {
+                MessageBox.Show("Хадгалах цонх алга байна.");
+                return;
+            }
+
+            TextBox txtBox = active.Controls.OfType<TextBox>().FirstOrDefault();
+            if (txtBox == null) return;
+
+            string path = active.Tag as string; // өмнө нь хадгалсан/нээсэн файлын зам
+
+            if (string.IsNullOrEmpty(path)) // анх удаа хадгалж байвал зам асууна
+            {
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Filter = "Текст файл (*.txt)|*.txt|Бүх файл (*.*)|*.*";
+                sfd.FileName = active.Text;
+                if (sfd.ShowDialog() != DialogResult.OK) return;
+                path = sfd.FileName;
+            }
+
+            System.IO.File.WriteAllText(path, txtBox.Text);
+            active.Tag = path;                              // дараагийн удаа шууд хадгална
+            active.Text = System.IO.Path.GetFileName(path); // гарчгийг файлын нэрээр солино
+        }
     }
 }
