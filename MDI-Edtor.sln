@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37710.0 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MDI-Edtor", "MDI-Edtor\MDI-Edtor.csproj", "{F60B9A7B-8190-4890-8D38-7E1CF289DB66}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F60B9A7B-8190-4890-8D38-7E1CF289DB66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F60B9A7B-8190-4890-8D38-7E1CF289DB66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F60B9A7B-8190-4890-8D38-7E1CF289DB66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F60B9A7B-8190-4890-8D38-7E1CF289DB66}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {37FBEAB2-D4A0-4E5F-8671-E51B6C02CAB1}
+	EndGlobalSection
+EndGlobal
